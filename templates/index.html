@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+</head>
+<body>
+    <a href="?name='xxx'"><p>测试</p></a>
+    <p>index页面</p>
+    <div>
+        {% for item in a_page %}
+            <hr>
+            <p>{{  item.title}} </p>
+            <p>{{  item.date}}</p>
+            <p>{{  item.url}} </p>
+            <p>{{  item.area}} </p>
+            <p>{{  item.price}} </p>
+        {% endfor %}
+
+    <div>
+        {% if a_page.has_previous %}
+            < <a href="?page={{ a_page.previous_page_number }}"> {{ a_page.previous_page_number }}</a>   {# 这里构建 a 标签，其href 还是挺让我吃惊的 #}
+        {% endif %}                                                                                       {# href='?page=' 就是在主页后面直接拼接上#}
+        {{ a_page.number }}
+        {% if a_page.has_next %}
+            <a href="?page={{ a_page.next_page_number }}"> {{ a_page.next_page_number }} </a>  >
+        {% endif %}
+    </div>
+    </div>
+</body>
+</html>
